@@ -1,0 +1,70 @@
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
+html, body { height: 100%; overflow: hidden; touch-action: manipulation; }
+body {
+  background: radial-gradient(ellipse at 30% 15%, #26875f 0%, #155f43 45%, #0b3a29 100%);
+  color: #fff8e6;
+  font-family: system-ui, -apple-system, Roboto, sans-serif;
+}
+.hidden { display: none !important; }
+
+#app {
+  display: flex; flex-direction: column; height: 100%;
+  padding: max(env(safe-area-inset-top), 14px) 12px max(env(safe-area-inset-bottom), 10px);
+}
+#hud { display: flex; align-items: center; justify-content: space-between; height: 52px; flex: none; }
+#level { width: 110px; font-size: 16px; font-weight: 600; opacity: .85; }
+#score { font-size: 32px; font-weight: 800; color: #fff3cf; text-shadow: 0 2px 0 #0b4a2c; }
+#menuBtn {
+  width: 46px; height: 46px; margin-left: 64px; border-radius: 50%; border: none; font-size: 24px; color: #fff;
+  background: radial-gradient(circle at 35% 30%, #6fd38a, #23854f); box-shadow: 0 3px 0 #0b4a2c;
+}
+
+#boardWrap { flex: 1 1 0; min-height: 0; position: relative; }
+#game { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+
+#boosters { flex: none; display: flex; justify-content: space-around; padding: 10px 0 18px; }
+.booster {
+  position: relative; width: 70px; height: 70px; border-radius: 50%;
+  border: 3px solid #f2c14e; color: #fff;
+  background: radial-gradient(circle at 35% 30%, #74d98e, #23854f);
+  box-shadow: 0 4px 0 #0b4a2c, 0 6px 14px rgba(0, 0, 0, .3);
+}
+.booster:active { transform: translateY(2px); box-shadow: 0 2px 0 #0b4a2c; }
+.booster:disabled { filter: grayscale(.85); opacity: .55; }
+.booster .ico { font-size: 30px; line-height: 64px; }
+.booster .badge {
+  position: absolute; right: -6px; bottom: -2px; min-width: 26px; height: 26px; padding: 0 5px;
+  border-radius: 13px; border: 2px solid #fff; background: #d63b2f;
+  font-size: 14px; font-weight: 800; line-height: 22px;
+}
+.booster .lbl {
+  position: absolute; left: 50%; top: 74px; transform: translateX(-50%);
+  font-size: 12px; white-space: nowrap; opacity: .8;
+}
+
+#toast {
+  position: fixed; left: 50%; bottom: 140px; transform: translateX(-50%);
+  padding: 10px 18px; border-radius: 20px; background: rgba(0, 0, 0, .7); font-size: 15px;
+}
+
+#overlay, #menu {
+  position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(4, 25, 17, .7);
+}
+.panel {
+  width: min(320px, 86vw); padding: 26px 22px; border-radius: 22px; text-align: center;
+  background: linear-gradient(#1f7a55, #11553b); border: 3px solid #f2c14e;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .5);
+}
+.panel h1 { font-size: 26px; margin-bottom: 12px; }
+#ovText { font-size: 17px; margin-bottom: 18px; opacity: .9; line-height: 1.4; }
+.panel button {
+  display: block; width: 100%; margin-top: 10px; padding: 14px; border: none; border-radius: 14px;
+  font-size: 18px; font-weight: 700; color: #3b2a00; background: #f2c14e; box-shadow: 0 3px 0 #a87f1c;
+}
+.panel button.secondary { color: #fff8e6; background: rgba(255, 255, 255, .14); box-shadow: none; }
+.toggle { display: flex; align-items: center; gap: 12px; font-size: 18px; padding: 8px 4px; }
+.toggle input { width: 22px; height: 22px; accent-color: #f2c14e; }
+
+/* На компьютере окно может быть широким — держим игру по центру узкой колонкой */
+#app { max-width: 600px; margin: 0 auto; }

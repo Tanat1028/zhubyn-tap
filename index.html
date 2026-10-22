@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#135c41">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Жұбын тап">
+<title>Жұбын тап</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header id="hud">
+    <div id="level">Уровень 1</div>
+    <div id="score">0</div>
+    <button id="menuBtn" aria-label="Меню">⚙</button>
+  </header>
+  <div id="boardWrap"><canvas id="game"></canvas></div>
+  <footer id="boosters">
+    <button class="booster" id="shuffleBtn"><span class="ico">🔀</span><span class="badge" id="shuffleN">3</span><span class="lbl">Перемешать</span></button>
+    <button class="booster" id="hintBtn"><span class="ico">💡</span><span class="badge" id="hintN">5</span><span class="lbl" id="hintLbl">Подсказка</span></button>
+    <button class="booster" id="undoBtn"><span class="ico">↩️</span><span class="badge" id="undoN">5</span><span class="lbl">Отмена</span></button>
+  </footer>
+</div>
+
+<div id="toast" class="hidden"></div>
+
+<div id="overlay" class="hidden">
+  <div class="panel">
+    <h1 id="ovTitle"></h1>
+    <div id="ovText"></div>
+    <button id="ovMain"></button>
+    <button id="ovSecond" class="secondary"></button>
+  </div>
+</div>
+
+<div id="menu" class="hidden">
+  <div class="panel">
+    <h1>Пауза</h1>
+    <label class="toggle"><input type="checkbox" id="soundToggle" checked> Звук</label>
+    <label class="toggle"><input type="checkbox" id="vibroToggle" checked> Вибрация</label>
+    <button id="resumeBtn">Продолжить</button>
+    <button id="restartBtn" class="secondary">Начать уровень заново</button>
+  </div>
+</div>
+
+<script src="game.js"></script>
+<script>
+  // Только для веб-версии (GitHub Pages). В Android-сборке адрес https://localhost — там не нужно.
+  if ('serviceWorker' in navigator && location.protocol === 'https:' && location.hostname !== 'localhost') {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  }
+</script>
+</body>
+</html>
